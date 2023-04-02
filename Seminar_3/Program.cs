@@ -93,7 +93,7 @@ Console.Write("Координата точки B по Y: ");
 int Yb = int.Parse(Console.ReadLine());
 
 double scalar = Math.Sqrt(Math.Pow((Xb - Xa), 2) + Math.Pow((Yb - Ya), 2));
-System.Console.WriteLine($"Расстояние между точкими в 2D пространстве: {scalar}");
+System.Console.WriteLine($"Расстояние между точками в 2D пространстве: {scalar}");
 */
 
 // Напишите программу, которая принимает на вход число (N) и выдаёт таблицу квадратов чисел от 1 до N.
