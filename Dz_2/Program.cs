@@ -10,7 +10,7 @@ int num = new Random().Next(100, 1000);
 System.Console.WriteLine($"{num}");
 
 int result1 = num % 100;
-int result2 = result1 / 10;
+int result2 = result1 / 10;                             //result2 = num / 10 % 10;
 System.Console.WriteLine($"{result2}");
 */
 
@@ -24,7 +24,7 @@ System.Console.WriteLine($"{result2}");
 
 /*
 System.Console.Write("Введите число: ");
-int num = int.Parse(System.Console.ReadLine());
+int num = int.Parse(Console.ReadLine());
 int result = 0;
 
 if (num > 99 || num < -99)
@@ -68,7 +68,7 @@ else
 
 /*
 System.Console.Write("Введите цифру: ");
-int num = int.Parse(System.Console.ReadLine());
+int num = int.Parse(Console.ReadLine());
 
 switch (num)
 {
