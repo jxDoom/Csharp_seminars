@@ -24,3 +24,15 @@ else
 {
     System.Console.WriteLine("Entered non-five-digit or negative five-digit number");
 }
+// Updated second solution:
+/*
+if (num >= 10000 && num < 100000)
+{
+    if (num / 10000 == num % 10 && num % 10000 / 1000 == num % 100 / 10)
+    {
+        System.Console.WriteLine("Yes, palindrome");
+    }
+    else System.Console.WriteLine("Not a palindrome");
+}
+else System.Console.WriteLine("Entered non-five-digit or negative five-digit number");
+*/
