@@ -29,11 +29,14 @@ int result = 0;
 
 if (num > 99 || num < -99)
 {
-    while (num >= 1000 || num <= -1000)
+    int tmp = num;                                      //введем доп. переменную в цикле и делаем с ним что хотим,
+                                                        //переменная num возможно применится дальше
+
+    while (tmp >= 1000 || tmp <= -1000)
     {
-        num /= 10;
+        tmp /= 10;
     }
-    result = num % 10;
+    result = tmp % 10;
     System.Console.WriteLine($"{Math.Abs(result)}");
 }
 else
@@ -82,3 +85,59 @@ switch (num)
     default: System.Console.WriteLine("Day of the week does not exist"); break;
 }
 */
+//Так как у нас идет строгое сравнение и нам нужно сделать кейсы стринговыми, то эту задачу лучше решить так:
+/*
+Console.WriteLine("Enter dayWeek : ");
+string strDayWeek = Console.ReadLine();
+
+PrintIsWeekend(strDayWeek);
+
+void PrintIsWeekend(string dayWeek)
+{
+
+    switch (dayWeek)
+    {
+        case "1":
+            Console.WriteLine("Понедельник- НЕТ"); break;
+        case "2":
+            Console.WriteLine("Вторник- НЕТ"); break;
+        case "3":
+            Console.WriteLine("Среда- НЕТ"); break;
+        case "4":
+            Console.WriteLine("Четверг- НЕТ"); break;
+        case "5":
+            Console.WriteLine("Пятница- Да"); break;
+        case "6":
+            Console.WriteLine("Суббота- Нет"); break;
+        case "7":
+            Console.WriteLine("Воскресенье- Нет"); break;
+    }
+}
+*/
+int SetNumber(string text = "")
+{
+    Console.Write($"Enter number {text}: ");
+    int num = Convert.ToInt32(Console.ReadLine());
+    return num;
+}
+
+bool ValidateWeekday(int dayWeek)
+{
+    return dayWeek >= 1 && dayWeek <= 7 ? true : false;         //тернарный оператор (ещё 131 строчка)
+}
+
+string PrintWeekendDay(int dayWeek)
+{
+    return dayWeek > 5 && dayWeek <= 7 ? "Weekend)))" : "Work day(((";
+}
+
+int weekDay = SetNumber("week day");
+
+if (ValidateWeekday(weekDay))
+{
+    System.Console.WriteLine(PrintWeekendDay(weekDay));
+}
+else
+{
+    System.Console.WriteLine("Week day not valid()");
+}
