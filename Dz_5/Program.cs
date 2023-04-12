@@ -90,6 +90,7 @@ double[] DoubleArray(int size)
     return array;
 }
 
+// Нахождение минимума и максимума в массиве и разница между ними
 void DifferenceMinMax(double[] arr)
 {
     double min = arr[0];
