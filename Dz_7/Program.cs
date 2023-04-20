@@ -96,7 +96,7 @@ void PrintMatrix(int[,] matrix)
 (int, int) FindIndexNumber(int[,] matrix)
 {
     int find = SetNumber("find");
-    int index = -1;
+    (int, int) index = (-1, -1);
     Console.WriteLine();
 
     for (int i = 0; i < matrix.GetLength(0); i++)
@@ -110,8 +110,8 @@ void PrintMatrix(int[,] matrix)
             }
         }
     }
-    if (index == -1) Console.WriteLine("There is no such number in the matrix");
-    return (-1, -1);
+    if (index == (-1, -1)) Console.WriteLine("There is no such number in the matrix");
+    return index;
 }
 
 void Solution_50()
@@ -136,9 +136,38 @@ void Solution_50()
 // 8 4 2 4
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
+/*
+// Нахождение среднего арифметического каждого столбца матрицы и запись их в новый массив
+double[] ColumnsArrayAvg(int[,] matrix)
+{
+    double avg = 0;
+    int index = 0;
+    double[] avg_arr = new double[index];
+    Console.WriteLine("The arithmetic mean of each column of the matrix is: ");
+
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+        double sum = 0;
+
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            sum += matrix[i, j];
+        }
+        avg = sum / matrix.GetLength(0);
+        double avg_round = Math.Round(avg, 2);
+
+        for (index = 0; index < matrix.GetLength(1); index++)
+        {
+            avg_arr[index] = avg_round;
+        }
+        Console.Write(string.Join("; ", avg_arr));
+    }
+    return avg_arr;
+}
+*/
 
 // Нахождение среднего арифметического каждого столбца
-void ColumnsArrayAvg(int[,] matrix)
+void ColumnsAvg(int[,] matrix)
 {
     double avg = 0;
     Console.WriteLine("The arithmetic mean of each column of the matrix is: ");
@@ -165,7 +194,7 @@ void Solution_52()
     int[,] matrix = GetRandomMatrix(rows, columns, minValue, maxValue);
     PrintMatrix(matrix);
     Console.WriteLine();
-    ColumnsArrayAvg(matrix);
+    ColumnsAvg(matrix);
 }
 
 Start();
@@ -177,19 +206,19 @@ void Start()
         Console.ReadLine();
         Console.Clear();
 
-        Console.WriteLine("47) Задача 47: Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.");
-        Console.WriteLine("50) Задача 50: Напишите программу, которая на вход принимает элемент в двумерном массиве, и возвращает его индексы первого найденого числа или же указание, что такого элемента нет.");
-        Console.WriteLine("52) Задача 52: Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.");
-        Console.WriteLine("0) End");
+        Console.WriteLine("1. Задача 47: Задайте двумерный массив размером mxn, заполненный случайными вещественными числами.");
+        Console.WriteLine("2. Задача 50: Напишите программу, которая на вход принимает элемент в двумерном массиве, и возвращает его индексы первого найденого числа или же указание, что такого элемента нет.");
+        Console.WriteLine("3. Задача 52: Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.");
+        Console.WriteLine("0. End");
 
         int numTask = SetNumber("task");
 
         switch (numTask)
         {
             case 0: return; break;
-            case 47: Solution_47(); break;
-            case 50: Solution_50(); break;
-            case 52: Solution_52(); break;
+            case 1: Solution_47(); break;
+            case 2: Solution_50(); break;
+            case 3: Solution_52(); break;
             default: Console.WriteLine("Error"); break;
         }
     }
