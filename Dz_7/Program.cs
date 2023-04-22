@@ -136,13 +136,13 @@ void Solution_50()
 // 8 4 2 4
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
-/*
+
 // Нахождение среднего арифметического каждого столбца матрицы и запись их в новый массив
-double[] ColumnsArrayAvg(int[,] matrix)
+void ColumnsArrayAvg(int[,] matrix)
 {
     double avg = 0;
     int index = 0;
-    double[] avg_arr = new double[index];
+    double[] avg_arr = new double[matrix.GetLength(1)];
     Console.WriteLine("The arithmetic mean of each column of the matrix is: ");
 
     for (int j = 0; j < matrix.GetLength(1); j++)
@@ -155,34 +155,12 @@ double[] ColumnsArrayAvg(int[,] matrix)
         }
         avg = sum / matrix.GetLength(0);
         double avg_round = Math.Round(avg, 2);
-
-        for (index = 0; index < matrix.GetLength(1); index++)
-        {
-            avg_arr[index] = avg_round;
-        }
-        Console.Write(string.Join("; ", avg_arr));
+        avg_arr[index] = avg_round;
+        index++;
     }
-    return avg_arr;
+    Console.Write("[" + string.Join("; ", avg_arr) + "]");
 }
-*/
 
-// Нахождение среднего арифметического каждого столбца
-void ColumnsAvg(int[,] matrix)
-{
-    double avg = 0;
-    Console.WriteLine("The arithmetic mean of each column of the matrix is: ");
-    for (int j = 0; j < matrix.GetLength(1); j++)
-    {
-        double sum = 0;
-
-        for (int i = 0; i < matrix.GetLength(0); i++)
-        {
-            sum += matrix[i, j];
-        }
-        avg = sum / matrix.GetLength(0);
-        Console.Write($"{Math.Round(avg, 2)}; ");
-    }
-}
 
 void Solution_52()
 {
@@ -194,10 +172,9 @@ void Solution_52()
     int[,] matrix = GetRandomMatrix(rows, columns, minValue, maxValue);
     PrintMatrix(matrix);
     Console.WriteLine();
-    ColumnsAvg(matrix);
+    ColumnsArrayAvg(matrix);
 }
 
-Start();
 
 void Start()
 {
@@ -224,3 +201,4 @@ void Start()
     }
 }
 
+Start();
