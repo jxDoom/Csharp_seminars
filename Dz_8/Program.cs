@@ -281,6 +281,101 @@ void Solution_60()
 // 10 09 08 07
 
 
+// Заполнение матрицы спирально
+int[,] SpiralMatrix(int rows, int columns)
+{
+    int[,] matrix = new int[rows, columns];
+    int i = 0;
+    int j = -1;         //т.к. начало цикла начинается с итерации j, заполнять будем с 0-индекса
+    int count = 1;      //с каждым циклом заполнения количество заполняемых строк и столбцов уменьшаем на 1
+
+    for (int num = 1; num <= rows * columns;)
+    {
+        while ((j < columns - count) && (num <= rows * columns))
+        {
+            j++;
+            matrix[i, j] = num;
+            num++;
+        }
+        while ((i < rows - count) && (num <= rows * columns))
+        {
+            i++;
+            matrix[i, j] = num;
+            num++;
+        }
+        while ((j >= count) && (num <= rows * columns))
+        {
+            j--;
+            matrix[i, j] = num;
+            num++;
+        }
+        count++;
+
+        while ((i >= count) && (num <= rows * columns))
+        {
+            i--;
+            matrix[i, j] = num;
+            num++;
+        }
+    }
+
+    return matrix;
+}
+
+// Вывод спиралевидной матрицы
+void PrintSpiralMatrix(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            if (matrix[i, j] < 10)
+            {
+                Console.Write($"{"0" + Convert.ToString(matrix[i, j])} ");
+            }
+            else Console.Write($"{matrix[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+
+void Solution_62()
+{
+    int rows = SetNumber("rows");
+    int columns = SetNumber("columns");
+    Console.WriteLine();
+    PrintSpiralMatrix(SpiralMatrix(rows, columns));
+}
 
 
-//Solution_62();
+
+void Start()
+{
+    while (true)
+    {
+        Console.ReadLine();
+        Console.Clear();
+
+        Console.WriteLine("1. Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.");
+        Console.WriteLine("2. Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.");
+        Console.WriteLine("3. Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.");
+        Console.WriteLine("4. Задача 60. Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.");
+        Console.WriteLine("5. Задача 58: Задача 62. Напишите программу, которая заполнит спирально массив . Размер вводит юзер.");
+        Console.WriteLine("0. End");
+
+        int numTask = SetNumber("task");
+
+        switch (numTask)
+        {
+            case 0: return; break;
+            case 1: Solution_54(); break;
+            case 2: Solution_56(); break;
+            case 3: Solution_58(); break;
+            case 4: Solution_60(); break;
+            case 5: Solution_62(); break;
+            default: Console.WriteLine("Error"); break;
+        }
+    }
+}
+
+Start();
