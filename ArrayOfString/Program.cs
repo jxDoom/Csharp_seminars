@@ -29,21 +29,35 @@ string[] ArrayOfString()
     }
     return array;
 }
-/*
+
 //Формирование нового массива из старого, где длина строк каждого элемента массива
 //меньше или равна 3 символам
 string[] NewArrayOfString(string[] array)
 {
+    int count = 0;
+    string[] arr = new string[count];
+
     for (int i = 0; i < array.Length; i++)
     {
-        
+        //for (int j = 0; j < ; j++)
+        //{
+            if (array[i].Length <= 3)
+            {
+                arr[count] = array[i];
+                count++;
+            }
+        //}
     }
+    PrintArray(arr);
+    return arr;
 }
-*/
+
 void Start()
 {
     string[] array = ArrayOfString();
     PrintArray(array);
+    //PrintArray(NewArrayOfString(array));
+    NewArrayOfString(array);
 }
 
 Start();
