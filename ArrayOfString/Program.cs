@@ -16,7 +16,7 @@ void PrintArray(string[] array)
 }
 
 //Создание массива из введеных строк
-string[] ArrayOfString()
+string[] StrArray()
 {
     Console.WriteLine("Enter quantity of elements in the array: ");
     int size = int.Parse(Console.ReadLine()!);
@@ -31,33 +31,41 @@ string[] ArrayOfString()
 }
 
 //Формирование нового массива из старого, где длина строк каждого элемента массива
-//меньше или равна 3 символам
-string[] NewArrayOfString(string[] array)
+//меньше или равна 3-м символам
+string[] NewStrArray(string[] array)
 {
     int count = 0;
-    string[] arr = new string[count];
+    string[] arr = new string[SizeNewStrArray(array)];
 
     for (int i = 0; i < array.Length; i++)
     {
-        //for (int j = 0; j < ; j++)
-        //{
-            if (array[i].Length <= 3)
-            {
-                arr[count] = array[i];
-                count++;
-            }
-        //}
+        if (array[i].Length < 4)
+        {
+            arr[i] = array[i]!;
+            count++;
+        }
     }
-    PrintArray(arr);
     return arr;
+}
+
+int SizeNewStrArray(string[] array)
+{
+    int new_size = 0;
+    for(int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length < 4) new_size++;
+    }
+    return new_size;
 }
 
 void Start()
 {
-    string[] array = ArrayOfString();
+    string[] array = StrArray();
+    Console.WriteLine("Initial Array:");
     PrintArray(array);
-    //PrintArray(NewArrayOfString(array));
-    NewArrayOfString(array);
+    string[] new_arr = NewStrArray(array);
+    Console.WriteLine("New Resulting Array:");
+    PrintArray(new_arr);
 }
 
 Start();
